@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "component_headings",
+  "info": {
+    "singularName": "component-heading",
+    "pluralName": "component-headings",
+    "displayName": "Component : Heading"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    }
+  }
+}
