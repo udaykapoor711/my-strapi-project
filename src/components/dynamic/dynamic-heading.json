@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_dynamic_dynamic_headings",
+  "info": {
+    "displayName": "Dynamic-Heading"
+  },
+  "options": {},
+  "attributes": {
+    "component_heading": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::component-heading.component-heading"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_dynamic_dynamic_page_labels",
+  "info": {
+    "displayName": "Dynamic-PageLabel"
+  },
+  "options": {},
+  "attributes": {
+    "component_page_name": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::component-page-name.component-page-name"
+    }
+  },
+  "config": {}
+}

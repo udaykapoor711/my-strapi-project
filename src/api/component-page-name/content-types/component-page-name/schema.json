@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "component_page_names",
+  "info": {
+    "singularName": "component-page-name",
+    "pluralName": "component-page-names",
+    "displayName": "Pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "PageName": {
+      "type": "string"
+    }
+  }
+}

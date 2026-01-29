@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "component_categories",
+  "info": {
+    "singularName": "component-category",
+    "pluralName": "component-categories",
+    "displayName": "Component : Category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "LLC",
+        "NonProfit",
+        "S-Corporation",
+        "C-Corporation",
+        "DBA"
+      ]
+    }
+  }
+}

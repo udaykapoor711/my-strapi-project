@@ -13,6 +13,24 @@
   "attributes": {
     "label": {
       "type": "string"
+    },
+    "align": {
+      "type": "enumeration",
+      "enum": [
+        "Left",
+        "Right",
+        "Center"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5"
+      ]
     }
   }
 }
