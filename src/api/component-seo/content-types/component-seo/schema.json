@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "component_seos",
+  "info": {
+    "singularName": "component-seo",
+    "pluralName": "component-seos",
+    "displayName": "Meta :  Seo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "InternalName": {
+      "type": "string"
+    },
+    "Index": {
+      "type": "boolean"
+    },
+    "Follow": {
+      "type": "boolean"
+    },
+    "ConicalURL": {
+      "type": "string"
+    },
+    "PageTitle": {
+      "type": "string"
+    },
+    "PageDescription": {
+      "type": "text"
+    },
+    "SchemaMarkup": {
+      "type": "richtext"
+    }
+  }
+}

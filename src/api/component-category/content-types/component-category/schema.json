@@ -11,15 +11,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "LLC",
-        "NonProfit",
-        "S-Corporation",
-        "C-Corporation",
-        "DBA"
-      ]
+    "heading": {
+      "type": "string"
+    },
+    "categoryFor": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
     }
   }
 }

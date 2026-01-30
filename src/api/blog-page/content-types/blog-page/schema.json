@@ -11,8 +11,27 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "PageName": {
+    "pageName": {
       "type": "string"
+    },
+    "meta_seo": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::component-seo.component-seo"
+    },
+    "sections_hero": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero-section.hero-section"
+    },
+    "component_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::component-category.component-category"
+    },
+    "slug": {
+      "type": "string",
+      "required": true
     }
   }
 }

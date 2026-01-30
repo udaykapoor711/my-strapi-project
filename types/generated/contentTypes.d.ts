@@ -441,6 +441,10 @@ export interface ApiBlogPageBlogPage extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    component_category: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::component-category.component-category'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -450,8 +454,51 @@ export interface ApiBlogPageBlogPage extends Struct.SingleTypeSchema {
       'api::blog-page.blog-page'
     > &
       Schema.Attribute.Private;
-    PageName: Schema.Attribute.String;
+    meta_seo: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::component-seo.component-seo'
+    >;
+    pageName: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    sections_hero: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::hero-section.hero-section'
+    >;
+    slug: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'categories';
+  info: {
+    displayName: 'Blogs : Category';
+    pluralName: 'categories';
+    singularName: 'category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blogs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::component-page-name.component-page-name'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -470,9 +517,15 @@ export interface ApiComponentCategoryComponentCategory
     draftAndPublish: true;
   };
   attributes: {
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
+    categoryFor: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -480,9 +533,6 @@ export interface ApiComponentCategoryComponentCategory
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    type: Schema.Attribute.Enumeration<
-      ['LLC', 'NonProfit', 'S-Corporation', 'C-Corporation', 'DBA']
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -524,7 +574,7 @@ export interface ApiComponentPageNameComponentPageName
   extends Struct.CollectionTypeSchema {
   collectionName: 'component_page_names';
   info: {
-    displayName: 'Pages';
+    displayName: 'Blogs';
     pluralName: 'component-page-names';
     singularName: 'component-page-name';
   };
@@ -532,16 +582,87 @@ export interface ApiComponentPageNameComponentPageName
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    data: Schema.Attribute.RichText;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::component-page-name.component-page-name'
     > &
       Schema.Attribute.Private;
-    PageName: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiComponentSeoComponentSeo
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'component_seos';
+  info: {
+    displayName: 'Meta :  Seo';
+    pluralName: 'component-seos';
+    singularName: 'component-seo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ConicalURL: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Follow: Schema.Attribute.Boolean;
+    Index: Schema.Attribute.Boolean;
+    InternalName: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::component-seo.component-seo'
+    > &
+      Schema.Attribute.Private;
+    PageDescription: Schema.Attribute.Text;
+    PageTitle: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    SchemaMarkup: Schema.Attribute.RichText;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHeroSectionHeroSection extends Struct.CollectionTypeSchema {
+  collectionName: 'hero_sections';
+  info: {
+    displayName: 'Sections : Hero';
+    pluralName: 'hero-sections';
+    singularName: 'hero-section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    component_heading: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::component-heading.component-heading'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    CTA: Schema.Attribute.Enumeration<['Button', 'SearchBar ', 'ContactUs']>;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    InternalName: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hero-section.hero-section'
+    > &
+      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1091,9 +1212,12 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
+      'api::category.category': ApiCategoryCategory;
       'api::component-category.component-category': ApiComponentCategoryComponentCategory;
       'api::component-heading.component-heading': ApiComponentHeadingComponentHeading;
       'api::component-page-name.component-page-name': ApiComponentPageNameComponentPageName;
+      'api::component-seo.component-seo': ApiComponentSeoComponentSeo;
+      'api::hero-section.hero-section': ApiHeroSectionHeroSection;
       'api::home-page.home-page': ApiHomePageHomePage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

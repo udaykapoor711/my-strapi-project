@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_dynamic_dynamic_heroes",
+  "info": {
+    "displayName": "Dynamic-Hero"
+  },
+  "options": {},
+  "attributes": {
+    "sections_hero": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero-section.hero-section"
+    }
+  },
+  "config": {}
+}

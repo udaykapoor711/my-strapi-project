@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_dynamic_dynamic_blogs",
+  "info": {
+    "displayName": "Dynamic-Blogs"
+  },
+  "options": {},
+  "attributes": {
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::component-page-name.component-page-name"
+    }
+  },
+  "config": {}
+}

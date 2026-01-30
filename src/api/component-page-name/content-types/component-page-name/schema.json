@@ -4,15 +4,24 @@
   "info": {
     "singularName": "component-page-name",
     "pluralName": "component-page-names",
-    "displayName": "Pages"
+    "displayName": "Blogs"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "PageName": {
+    "title": {
       "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "blogs"
+    },
+    "data": {
+      "type": "richtext"
     }
   }
 }
